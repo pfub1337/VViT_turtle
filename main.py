@@ -15,6 +15,8 @@ def set_values():
 
 
 def square(a):
+    set_values()
+
     turtle.penup()
     turtle.goto(- a / 2, a / 2)
     turtle.pendown()
@@ -25,6 +27,7 @@ def square(a):
 
 def circle(r):
     set_values()
+
     turtle_step = 2 * math.pi * r / 360
     turtle.penup()
     turtle.goto(r / 2, 0)
@@ -36,6 +39,8 @@ def circle(r):
 
 
 def triangle(a):
+    set_values()
+
     turtle.penup()
     turtle.goto(-a / 2, -(a / 2 * math.sqrt(3) / 3))
     turtle.pendown()
@@ -45,6 +50,8 @@ def triangle(a):
 
 
 def hexagon(a):
+    set_values()
+
     turtle.penup()
     turtle.goto(-a / 2, -a * math.sqrt(3) / 2)
     turtle.pendown()
@@ -54,6 +61,8 @@ def hexagon(a):
 
 
 def square_spiral(a):
+    set_values()
+
     step = a / 10
     for i in range(1, 11):
         for j in range(2):
@@ -62,6 +71,8 @@ def square_spiral(a):
 
 
 def spiral(step):
+    set_values()
+
     for i in range(36):
         for j in range(20):
             turtle.forward(step)
@@ -70,6 +81,8 @@ def spiral(step):
 
 
 def cursor(a):
+    set_values()
+
     turtle.penup()
     turtle.left(90)
     turtle.forward(a / 2)
@@ -100,12 +113,15 @@ def cursor(a):
 
 
 def star(a):
+    set_values()
+
     for i in range(8):
         cursor(a)
         turtle.right(360 / 8)
 
 
 def duck():
+    set_values()
     a = 100
 
     # голова
@@ -281,12 +297,22 @@ def menu():
                 settings_choose = input('+----------------------------+\n'
                                         '|          Settings          |\n'
                                         '| 1. Change pen color        |\n'
+                                        f'| Current color: {COLOR}{" " * (30 - 18 - len(str(COLOR)))}|\n'
                                         '| 2. Change pen speed        |\n'
+                                        f'| Current speed: {SPEED}{" " * (30 - 18 - len(str(SPEED)))}|\n'
                                         '| 3. Change pen width        |\n'
+                                        f'| Current width: {WIDTH}{" " * (30 - 18 - len(str(WIDTH)))}|\n'
                                         '| 0. Back to menu            |\n'
-                                        '+----------------------------+')
+                                        '+----------------------------+\n'
+                                        'Answer: ')
                 if settings_choose == '1':
-                    COLOR = input('Available colors\n' + '\n'.join(colors))
+                    COLOR = input('Available colors\n' + '\n'.join(colors) + '\nAnswer: ')
+                elif settings_choose == '2':
+                    SPEED = int(input('Insert new speed value: '))
+                elif settings_choose == '3':
+                    WIDTH = int(input('Insert new width value: '))
+                elif settings_choose == '0':
+                    break
         elif choose.lower() == 'exit' or choose == '0':
             print('Goodbye!')
             exit(0)
